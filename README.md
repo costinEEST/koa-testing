@@ -1,0 +1,5 @@
+- Commands:
+
+```bash
+tsc --init
+```
