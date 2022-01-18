@@ -3,7 +3,8 @@ import bodyParser from "koa-bodyparser";
 import cors from "koa2-cors";
 import logger from "koa-logger";
 import dotenv from "dotenv";
-import Router from "koa-router";
+
+import healthCheckRoutes from "./routes/healthCheck";
 
 dotenv.config();
 
@@ -19,19 +20,7 @@ app.use(
 );
 app.use(logger());
 
-const router = new Router();
-
-router.get("/", async ctx => {
-  try {
-    ctx.body = {
-      status: "success"
-    };
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-app.use(router.routes());
+app.use(healthCheckRoutes.routes());
 
 const server = app
   .listen(PORT, async () => {
