@@ -5,6 +5,7 @@ import logger from "koa-logger";
 import dotenv from "dotenv";
 
 import healthCheckRoutes from "./routes/healthCheck";
+import gamesRoutes from "./routes/games";
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use(
 app.use(logger());
 
 app.use(healthCheckRoutes.routes());
+app.use(gamesRoutes.routes());
 
 const server = app
   .listen(PORT, async () => {
